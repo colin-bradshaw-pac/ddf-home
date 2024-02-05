@@ -1,0 +1,116 @@
+body{
+    background-color: #f4f4f4;
+    color: #555555;
+    font: normal 16px Arial, Helvetica, sans-serif;
+    line-height: 1.6em;
+    margin: 0;
+}
+
+a{
+    text-decoration: none;
+    color: #000;
+}
+
+a:hover{
+    color: red;
+}
+
+.container{
+    width: 80%;
+    margin: auto;
+}
+
+.button{
+    background-color: #333;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+}
+
+.button:hover{
+    background: red;
+    color: #fff;
+}
+
+.clr{
+    clear: both;
+}
+
+.box-1{
+    border: 3px dotted #ccc;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.disclaimers{
+    border: 1px #ccc solid;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.disclaimers h2{
+    text-align: center;
+}
+
+.disclaimers ul{
+    padding-left: 20;
+    list-style: square;
+}
+
+.disclaimers li{
+    padding-top: 8px;
+    padding-bottom: 0px;
+    border-bottom: dotted 1px #333;
+}
+
+.catalog-form{
+    padding: 20px;
+}
+
+.form-group{
+    padding-bottom: 15px;
+}
+
+.catalog-form label{
+    display: block;
+}
+
+.catalog-form input[type="text"], .catalog-form textarea{ 
+    padding: 8px;
+    width: 100%;
+}
+
+.catalog-form select{ 
+    padding: 8px;
+    width: 15%;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.block{
+    float: left;
+    width: 33.3%;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-sizing: border-box;
+    padding: 15px;
+    box-sizing: border-box;
+    
+}
+
+#main-block{
+    float: left;
+    border: 1px solid #ccc;
+    width: 70%;
+    box-sizing: border-box;
+    padding: 15px;
+}
+
+#sidebar{
+    float: right;
+    width: 30%;
+    background-color: #333;
+    color: #fff;
+    padding: 15px;
+    box-sizing: border-box;
+}
