@@ -18,6 +18,7 @@ jobs:
     - name: Check-out python repository
       uses: actions/checkout@v4
       with:
+        # repository: colin-bradshaw-pac/ddf-home-testing
         sparse-checkout: 'catalog'
         sparse-checkout-cone-mode: false
         token: ${{ secrets.GITHUB_TOKEN }}
