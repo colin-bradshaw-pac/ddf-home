@@ -14,9 +14,10 @@ def transform_use_cases(insert_dict: dict) -> dict:
 def main():
     payload_dict = {}
 
+
     payload_dict = json.loads(sys.argv[1])
 
-    CSV_PATH = r'catalog/catalog.csv'
+    CATALOG_PATH = r'catalog/catalog.md'
 
     body = payload_dict["event"]["issue"]["body"].split('###')[1:]
 
@@ -26,10 +27,15 @@ def main():
 
     insert_list= list(transformed_insert_dict.values())
 
-    insert_row = ','.join(f'"{record}"' for record in insert_list)
+    insert_row = '| ' + ' | '.join(insert_list) + ' |'
 
-    with open(CSV_PATH, 'a') as fin:
-        fin.write(insert_row+'\n')
+
+    with open(CATALOG_PATH, 'r+') as fin:
+        lines = fin.read()
+        if lines[-1] in ['\n', '\r\n', '']:
+            fin.write(insert_row)
+        else: 
+            fin.write('\n'+insert_row)
 
 if __name__ == "__main__":
     main()

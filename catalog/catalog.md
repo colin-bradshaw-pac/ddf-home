@@ -1,0 +1,2 @@
+| Organization Name | Product/Service Name | Contact Email | Contact Phone | Product Description/Maturity | Covered Use Cases | USDM Version Compatibility |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
