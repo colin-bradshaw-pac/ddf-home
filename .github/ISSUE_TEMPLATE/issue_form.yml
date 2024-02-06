@@ -7,7 +7,6 @@ body:
     attributes:
       label: Organization Name
       description: What is the name of your organization or team?
-      placeholder:
     validations:
       required: true
   
@@ -16,7 +15,6 @@ body:
     attributes:
       label: Product Name
       description: What is the name of your Digital Data Flow (DDF) compatible solution or platform?
-      placeholder:
     validations:
       required: true
 
@@ -25,7 +23,6 @@ body:
     attributes:
       label: Primary Point of Contact Email
       description: What is the primary contact email for your product/solution?
-      placeholder:
     validations:
       required: true
 
@@ -34,7 +31,6 @@ body:
     attributes:
       label: Primary Point of Contact Phone
       description: What is the primary contact email for your product/solution?
-      placeholder:
     validations:
       required: true
   
@@ -43,7 +39,6 @@ body:
     attributes:
       label: Product Description/Maturity
       description: Please describe your solution, making sure to include how it utilizes the Unified Study Definition Model (USDM), how it enables protocol digitization, and where it sits on the development lifecycle. (Attachments are currently not supported)
-      placeholder:
     validations:
       required: true
 
@@ -62,9 +57,15 @@ body:
         - label: Operational systems (i.e. CTMS, IRT, etc.)
         - label: Registry reporting
         - label: Regulatory submission
-        - label: Other (https://github.com/orgs/community/discussions/15807)
+        - label: Other
+
+  - type: textarea
+    id: other_use_case
+    attributes:
+      label: Other Use Case
+      description: Enter other use case which your solution enables.
     validations:
-      required: true
+      required: false
 
   - type: dropdown
     id: usdm_version
@@ -73,12 +74,21 @@ body:
       description: What version of the USDM is your solution compatible with?
       multiple: false
       options:
-        - 1.0
-        - 1.5
-        - 2.0
-        - 2.5
-        - 2.6
-        - 3.0
+        - "1.0"
+        - "1.5"
+        - "2.0"
+        - "2.5"
+        - "2.6"
+        - "3.0"
       default: 0
     validations:
       required: true
+
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Confirm Submission?
+      description: Check the box below to enable submission
+      options:
+        - label: Confirm Submission
+          required: true

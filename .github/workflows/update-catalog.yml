@@ -43,7 +43,7 @@ jobs:
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         git add ${{ github.workspace }}/catalog/catalog.md
-        git commit -m "generated"
+        git commit -m "Adding row from issue #<id>"
     
     - name: Push changes
       uses: ad-m/github-push-action@v0.8.0
