@@ -21,7 +21,7 @@ jobs:
         path: ${{ env.PYTHON_DIR }}
 
     - name: Run add_row
-      run: python ${{ env.PYTHON_DIR }}/add_row.py '${{ env.GITHUB_CONTEXT }}'
+      run: python /home/runner/work/ddf-home-testing/catalog/add_row.py '${{ env.GITHUB_CONTEXT }}'
       shell: sh
 
     - name: commit and push changes
