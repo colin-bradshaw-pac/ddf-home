@@ -3,19 +3,76 @@ description: Add a row to the DDF Catalog
 title: "[Bug]: "
 body:
   - type: input
-    id: contact
+    id: org_name
     attributes:
-      label: Contact Details
-      description: How can we get in touch with you if we need more info?
+      label: Organization Name
+      description: <desc>
+      placeholder: example org name
+    validations:
+      required: true
+  
+  - type: input
+    id: product_name
+    attributes:
+      label: Product/Service Name
+      description: <desc>
+      placeholder: example product name
+    validations:
+      required: true
+
+  - type: input
+    id: contact_email
+    attributes:
+      label: Primary Point of Contact Email
+      description: <desc>
       placeholder: ex. email@example.com
     validations:
-      required: false
-  - type: textarea
-    id: what-happened
+      required: true
+
+  - type: input
+    id: contact_phone
     attributes:
-      label: What happened?
-      description: Also tell us, what did you expect to happen?
-      placeholder: Tell us what you see!
-      value: "A bug happened!"
+      label: Primary Point of Contact Phone
+      description: <desc>
+      placeholder: ex. 555-555-5555
+    validations:
+      required: true
+  
+  - type: textarea
+    id: product_maturity
+    attributes:
+      label: Product Description/Maturity
+      description: <desc>
+      placeholder: example text
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: use_cases
+    attributes:
+      label: Covered Use Cases
+      description: The Covered Use Cases of your Product
+      mulitple: true
+      options:
+        - label: option 1
+        - label: option 2
+        - label: option 3
+    validations:
+      required: true
+
+  - type: dropdown
+    id: usdm_version
+    attributes:
+      label: USDM Version Compatibility
+      description: What version of our software are you running?
+      multiple: false
+      options:
+        - 1.0
+        - 1.5
+        - 2.0
+        - 2.5
+        - 2.6
+        - 3.0
+      default: 0
     validations:
       required: true
