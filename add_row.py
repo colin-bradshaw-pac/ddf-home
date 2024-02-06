@@ -2,22 +2,36 @@
 import sys
 import json
 
-payload_dict = {}
+def transform_use_cases(insert_dict: dict) -> dict:
+    # Transform Use Cases
+    use_cases_string = insert_dict['Covered Use Cases'].strip()
 
-print(f'test file inserted is {sys.argv[1]}')
+    use_cases_selected = [value.strip('- [X] ') for value in use_cases_string.split('\n') if "[X]" in value]
 
-with open(sys.argv[1]) as fin:
-    payload_dict = json.load(fin)
+    insert_dict['Covered Use Cases'] = ', '.join(use_cases_selected)
 
-CSV_PATH = r'catalog.csv'
+    return insert_dict
 
-body = payload_dict["event"]["issue"]["body"].split('###')[1:]
+def main():
+    payload_dict = {}
 
-insert_dict = {key:value for key, value in [item.strip().split('\n\n') for item in body]}
+    with open(sys.argv[1]) as fin:
+        payload_dict = json.load(fin)
 
-insert_list= list(insert_dict.values())
+    CSV_PATH = r'catalog.csv'
 
-insert_row = ','.join(f'"{record}"' for record in insert_list)
+    body = payload_dict["event"]["issue"]["body"].split('###')[1:]
 
-with open(CSV_PATH, 'a') as fin:
-    fin.write(insert_row+'\n')
+    insert_dict = {key:value for key, value in [item.strip().split('\n\n') for item in body]}
+
+    transformed_insert_dict = transform_use_cases(insert_dict)
+
+    insert_list= list(transformed_insert_dict.values())
+
+    insert_row = ','.join(f'"{record}"' for record in insert_list)
+
+    with open(CSV_PATH, 'a') as fin:
+        fin.write(insert_row+'\n')
+
+if __name__ == "__main__":
+    main()
