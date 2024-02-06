@@ -52,7 +52,6 @@ body:
     attributes:
       label: Covered Use Cases
       description: The Covered Use Cases of your Product
-      mulitple: true
       options:
         - label: option 1
         - label: option 2
