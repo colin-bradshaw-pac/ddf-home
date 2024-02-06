@@ -32,9 +32,8 @@ jobs:
       run: python ${{ github.workspace }}/catalog/add_row.py '${{ env.GITHUB_CONTEXT }}'
       shell: sh
 
-    # - name: commit and push changes
-    #   run: |
-    #     git add --all
-    #     git commit -m "generated"
-    #     git push
-
+    - name: commit and push changes
+      run: |
+        git add --all
+        git commit -m "generated"
+        git push
