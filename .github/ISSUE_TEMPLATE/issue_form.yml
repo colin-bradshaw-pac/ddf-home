@@ -1,5 +1,5 @@
-name: Bug Report
-description: File a bug report
+name: Add To Catalog
+description: Add a row to the DDF Catalog
 title: "[Bug]: "
 body:
   - type: input
