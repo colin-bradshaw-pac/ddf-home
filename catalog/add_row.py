@@ -18,7 +18,7 @@ def main():
     with open(sys.argv[1]) as fin:
         payload_dict = json.load(fin)
 
-    CSV_PATH = r'catalog.csv'
+    CSV_PATH = r'catalog/catalog.csv'
 
     body = payload_dict["event"]["issue"]["body"].split('###')[1:]
 

@@ -42,7 +42,7 @@ body:
     id: product_maturity
     attributes:
       label: Product Description/Maturity
-      description: Please describe your solution, making sure to include how it utilizes the Unified Study Definition Model (USDM), how it enables protocol digitization, and where it sits on teh development lifecycle.
+      description: Please describe your solution, making sure to include how it utilizes the Unified Study Definition Model (USDM), how it enables protocol digitization, and where it sits on the development lifecycle. (Attachments are currently not supported)
       placeholder:
     validations:
       required: true

@@ -5,7 +5,7 @@ on:
     types: [opened]
 
 env:
-  PYTHON_DIR: python
+  PYTHON_DIR: catalog
   GITHUB_CONTEXT: ${{ toJson(github) }}
 
 jobs:
@@ -14,13 +14,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Check-out python repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
       with:
         repository: colin-bradshaw-pac/ddf-home-testing
+        sparse-checkout: |
+          catalog
         token: ${{ secrets.GITHUB_TOKEN }}
         path: ${{ env.PYTHON_DIR }}
 
     - name: Run add_row
       run: python ${{ env.PYTHON_DIR }}/add_row.py '${{ env.GITHUB_CONTEXT }}'
       shell: sh
+
+    - name: commit and push changes
+    run: |
+    git add --all
+    git commit -m "generated"
+    git push
 
