@@ -49,13 +49,13 @@ body:
         - label: Operational systems (i.e. CTMS, IRT, etc.)
         - label: Registry reporting
         - label: Regulatory submission
-        - label: Other
+        - label: Other(s)
 
   - type: textarea
     id: other_use_case
     attributes:
-      label: Other Use Case
-      description: Enter other use case which your solution enables.
+      label: Other Use Case(s)
+      description: If not listed above, please enter your use case(s) below seperated by a comma.
     validations:
       required: false
 
