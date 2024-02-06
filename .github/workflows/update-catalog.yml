@@ -20,11 +20,15 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         path: ${{ env.PYTHON_DIR }}
 
+    - name: pull files
+      run: |
+        git pull
+
     - name: Check file existence
       id: check_files
       uses: thebinaryfelix/check-file-existence-action@1.0.0
       with:
-        files: 'add_row.py'
+        files: '*/add_row.py'
 
     - name: Run add_row
       run: python /home/runner/work/ddf-home-testing/catalog/add_row.py '${{ env.GITHUB_CONTEXT }}'
