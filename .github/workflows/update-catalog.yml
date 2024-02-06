@@ -28,7 +28,7 @@ jobs:
 
     - name: commit and push changes
     run: |
-    git add --all
-    git commit -m "generated"
-    git push
+      git add --all
+      git commit -m "generated"
+      git push
 
