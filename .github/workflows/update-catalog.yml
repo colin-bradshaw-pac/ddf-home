@@ -24,7 +24,7 @@ jobs:
 
     - name: Explore runner file system
       run: |
-        ls ${{ github.workspace }}/catalog
+        ls ${{ github.workspace }}/catalog/catalog
 
     # - name: Run add_row
     #   run: python ${{ env.PYTHON_DIR }}/add_row.py '${{ env.GITHUB_CONTEXT }}'
