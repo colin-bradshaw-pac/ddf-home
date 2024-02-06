@@ -1,1 +1,0 @@
-This is a placeholder file, we're using this to show a file that's in the root directory of the repo that we don't want the runner to retrieve
