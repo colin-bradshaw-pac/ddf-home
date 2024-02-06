@@ -3,7 +3,6 @@ import sys
 import json
 
 def transform_use_cases(insert_dict: dict) -> dict:
-    # Transform Use Cases
     use_cases_string = insert_dict['Covered Use Cases'].strip()
 
     use_cases_selected = [value.strip('- [X] ') for value in use_cases_string.split('\n') if "[X]" in value]

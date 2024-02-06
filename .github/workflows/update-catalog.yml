@@ -32,8 +32,14 @@ jobs:
       run: python ${{ github.workspace }}/catalog/add_row.py '${{ env.GITHUB_CONTEXT }}'
       shell: sh
 
+    - name: check git config
+      run: |
+        git config --list
+
     - name: commit and push changes
       run: |
-        git add --all
+        git config --global user.email "colin.bradshaw@paconsulting.com"
+        git config --global user.name "Colin Bradshaw"
+        git add ${{ github.workspace }}/catalog/catalog.csv
         git commit -m "generated"
         git push
