@@ -22,15 +22,15 @@ jobs:
 
     - name: Check root file system
       run: |
-        ls ${{ github.workspace }}/catalog
+        ls ${{ github.workspace }}
 
     - name: check catalog
       run: |
         ls ${{ github.workspace }}/catalog
 
-    # - name: Run add_row
-    #   run: python ${{ env.PYTHON_DIR }}/add_row.py '${{ env.GITHUB_CONTEXT }}'
-    #   shell: sh
+    - name: Run add_row
+      run: python ${{ github.workspace }}/catalog/add_row.py '${{ env.GITHUB_CONTEXT }}'
+      shell: sh
 
     # - name: commit and push changes
     #   run: |
