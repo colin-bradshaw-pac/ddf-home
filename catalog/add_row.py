@@ -15,7 +15,7 @@ def transform_use_cases(insert_dict: dict) -> dict:
 def main():
     payload_dict = {}
 
-    payload_dict = json.loads(sys.argv[0])
+    payload_dict = json.loads(sys.argv[1])
 
     CSV_PATH = r'catalog/catalog.csv'
 
