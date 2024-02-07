@@ -39,12 +39,7 @@ def append_other_use_cases(use_cases: str, other_use_cases: str,  remove_others:
 
 def main():
     # Store github_context payload
-    # payload_dict: dict = json.loads(sys.argv[1])
-
-    # LOCAL TESTING BLOCK
-    payload_dict: dict = {}
-    with open(sys.argv[1]) as fin:
-        payload_dict = json.load(fin)
+    payload_dict: dict = json.loads(sys.argv[1])
 
     # Select Issue body from JSON Dictionary
     issue_body: list = payload_dict["event"]["issue"]["body"].split('###')[1:]
