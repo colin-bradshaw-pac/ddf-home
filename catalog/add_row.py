@@ -6,52 +6,79 @@ import json
 CATALOG_PATH = r'catalog/catalog.md'
 
 '''
-TODO: Deal with other use cases field:
-    - Add function to take other use case and append to Use Cases Column values <----
-    - List or display as it's own column?
-
-
-TODO: Modify email address into a mailto link
+TEST CASES:
+    - COMPLETE: TEST_1: All Normal, no Other Use Cases
+    - COMPLETE: TEST_2: Other Check Selected, No Other FreeText populated
+    - COMPLETE: TEST_3: Other Not Checked, FreeText Populated
+    - COMPLETE: TEST_4: Other checked, Freetext populated
+    - COMPLETE: TEST_5: Handle case where only OTHER is selected with no freetext populated
+    - COMPLETE: TEST_6: Where only Other(s) is selected from Covered Use Cases and Freetext is populated
 '''
 
-def transform_use_cases(insert_dict: dict) -> dict:
-    use_cases_string = insert_dict['Covered Use Cases'].strip()
+def transform_use_cases(use_cases: str) -> str:
+    use_cases = use_cases.strip()
 
-    use_cases_selected = [value.strip('- [X] ') for value in use_cases_string.split('\n') if "[X]" in value]
+    use_cases_selected = [value.strip('- [X] ') for value in use_cases.split('\n') if "[X]" in value]
 
-    insert_dict['Covered Use Cases'] = ', '.join(use_cases_selected)
+    return ', '.join(use_cases_selected)
 
-    return insert_dict
+def transform_email_address(email: str) -> str:
+    email = f'[Email](mailto:{email})'
+    return email
 
-def append_other_use_cases(insert_dict: dict) -> dict:
-    use_cases = insert_dict['Covered Use Cases']
-    other_use_case = insert_dict['Other Use Case']
-
-    use_cases += ', ' + other_use_case
-
-    insert_dict['Covered Use Cases'] = use_cases
-
-    return insert_dict
+def append_other_use_cases(use_cases: str, other_use_cases: str,  remove_others: bool) -> dict:
+    if remove_others:
+        if ', Other(s)' in use_cases:
+            use_cases = use_cases.replace(', Other(s)', '')
+            use_cases += ', ' + other_use_cases
+        else:
+            use_cases = use_cases.replace('Other(s)', '')
+            use_cases = other_use_cases
+    
+    return use_cases
 
 def main():
-    payload_dict = json.loads(sys.argv[1])
+    # Store github_context payload
+    # payload_dict: dict = json.loads(sys.argv[1])
 
-    body = payload_dict["event"]["issue"]["body"].split('###')[1:]
+    # LOCAL TESTING BLOCK
+    payload_dict: dict = {}
+    with open(sys.argv[1]) as fin:
+        payload_dict = json.load(fin)
 
-    insert_dict = {key:value for key, value in [item.strip().split('\n\n') for item in body]}
+    # Select Issue body from JSON Dictionary
+    issue_body: list = payload_dict["event"]["issue"]["body"].split('###')[1:]
 
+    # Compose ordered dictionary of form answer : responses
+    insert_dict = {key:value for key, value in [item.strip().split('\n\n') for item in issue_body]}
+
+    # Remove confirm submission from insert dict, as we don't write that to the table
     del insert_dict['Confirm Submission?']
 
-    transformed_insert_dict = transform_use_cases(insert_dict)
+    # Perform Transformations
+    insert_dict['Primary Point of Contact Email'] = transform_email_address(insert_dict['Primary Point of Contact Email'])
 
-    retransformed_insert_dict = append_other_use_cases(transformed_insert_dict)
+    insert_dict['Covered Use Cases'] = transform_use_cases(insert_dict['Covered Use Cases'])
 
-    del retransformed_insert_dict['Other Use Case']
+    # Process Other Uses Case(s)
+    if insert_dict['Other Use Case(s)'] != '_No response_':
+        if 'Other(s)' in insert_dict['Covered Use Cases']:
+            # Remove 'Other(s)' and append 'Other Use Case(s)' to 'Covered Use Cases'
+            insert_dict['Covered Use Cases'] = append_other_use_cases(insert_dict['Covered Use Cases'], insert_dict['Other Use Case(s)'], True)
+        else:
+            # Just append 'Other Use Case(s)' to 'Covered Use Cases'
+            insert_dict['Covered Use Cases'] = append_other_use_cases(insert_dict['Covered Use Cases'], insert_dict['Other Use Case(s)'], False)
 
-    insert_list= list(transformed_insert_dict.values())
+    # Delete 'Other Use Case(s)' from insert_dict
+    del insert_dict['Other Use Case(s)']
 
+    # Transform dictionary values to list
+    insert_list = list(insert_dict.values())
+
+    # Transform list into pip delimited string, for insertion into markdown table
     insert_row = '| ' + ' | '.join(insert_list) + ' |'
 
+    # Open catalog.md and write row to bottom of file
     with open(CATALOG_PATH, 'r+') as fin:
         lines = fin.read()
         if lines[-1] in ['\n', '\r\n', '']:
