@@ -10,3 +10,4 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam consequatur, qu
 | Organization Name | Product/Service Name | Contact Email | Product Description/Maturity | Covered Use Cases | USDM Version Compatibility |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | PA Consulting | Test Product #1 | [Email](mailto:Colin.Bradshaw@paconsulting.com) | Test Product Decsription #1 | Electronic Health Record (EHR) | 2.5 |
+| PA Consulting | Test Product #2 | [Email](mailto:Colin.Bradshaw@paconsulting.com) | Test Description | Electronic Health Record (EHR) | 2.5 |
