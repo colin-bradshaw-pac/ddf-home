@@ -5,16 +5,6 @@ import json
 # Define constants
 CATALOG_PATH = r'catalog/catalog.md'
 
-'''
-TEST CASES:
-    - COMPLETE: TEST_1: All Normal, no Other Use Cases
-    - COMPLETE: TEST_2: Other Check Selected, No Other FreeText populated
-    - COMPLETE: TEST_3: Other Not Checked, FreeText Populated
-    - COMPLETE: TEST_4: Other checked, Freetext populated
-    - COMPLETE: TEST_5: Handle case where only OTHER is selected with no freetext populated
-    - COMPLETE: TEST_6: Where only Other(s) is selected from Covered Use Cases and Freetext is populated
-'''
-
 def transform_use_cases(use_cases: str) -> str:
     use_cases = use_cases.strip()
 
@@ -34,6 +24,8 @@ def append_other_use_cases(use_cases: str, other_use_cases: str,  remove_others:
         else:
             use_cases = use_cases.replace('Other(s)', '')
             use_cases = other_use_cases
+    else:
+        use_cases += ', ' + other_use_cases
     
     return use_cases
 
