@@ -6,6 +6,9 @@ import json
 CATALOG_PATH = r'catalog/catalog.md'
 
 def transform_use_cases(use_cases: str) -> str:
+    '''
+    Function for discarding any use cases that were not selected.
+    '''
     use_cases = use_cases.strip()
 
     use_cases_selected = [value.strip('- [X] ') for value in use_cases.split('\n') if "[X]" in value]
@@ -13,10 +16,16 @@ def transform_use_cases(use_cases: str) -> str:
     return ', '.join(use_cases_selected)
 
 def transform_email_address(email: str) -> str:
+    '''
+    Function for converting an email address into a mailto: link string in the markdown format.
+    '''
     email = f'[Email](mailto:{email})'
     return email
 
-def append_other_use_cases(use_cases: str, other_use_cases: str,  remove_others: bool) -> dict:
+def append_other_use_cases(use_cases: str, other_use_cases: str,  remove_others: bool) -> str:
+    '''
+    Function for appending any freetext use cases to the "Covered Ue Cases" field, discarding the "Other(s)" option, if selected.
+    '''
     if remove_others:
         if ', Other(s)' in use_cases:
             use_cases = use_cases.replace(', Other(s)', '')
@@ -30,6 +39,9 @@ def append_other_use_cases(use_cases: str, other_use_cases: str,  remove_others:
     return use_cases
 
 def main():
+    '''
+    Main function, transforms payload into a markdown table formatted string and inserts it to the catalog.md file.
+    '''
     # Store github_context payload
     payload_dict: dict = json.loads(sys.argv[1])
 
