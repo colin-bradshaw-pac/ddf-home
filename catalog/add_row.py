@@ -1,6 +1,5 @@
 # Standard Library Imports
 import os
-import sys
 import json
 
 # Define constants
@@ -85,10 +84,10 @@ def write_to_catalog(insert_dict: dict[str, str])-> None:
 def main():
     '''Main function, transforms payload into a markdown table formatted string and inserts it to the catalog.md file.'''
     # Store github_context payload as python dictionary
-    # payload_dict: dict = json.loads(sys.argv[1])
+    payload_dict: dict = json.loads(os.environ['GITHUB_CONTEXT'])
 
     print('Printing github_context')
-    print(os.environ["GITHUB_CONTEXT"])
+    print(payload_dict)
 
     # # Extract Issue content from JSON Dictionary
     # issue_body: list = payload_dict["event"]["issue"]["body"].split('###')[1:]
