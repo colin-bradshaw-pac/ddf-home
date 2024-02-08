@@ -1,3 +1,4 @@
+<script src="https://rawcdn.githack.com/oscarmorrison/md-page/master/md-page.js"></script><noscript>
 # Heading
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam consequatur, quasi expedita porro non praesentium eligendi magni perferendis, alias quas omnis quis blanditiis?
 
