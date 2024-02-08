@@ -11,3 +11,4 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam consequatur, qu
 | Organization Name | Solution Name | Contact Email | Product Description | More Info | Covered Use Cases | USDM Version Compatibility | Link |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | PA Consulting | Example Product Name | [Email](mailto:colin-bradshaw@paconsulting.com) | A short product description. It's limited to 250 characters. | [More Information](https://github.com/colin-bradshaw-pac/ddf-home-testing/issues/76) | Electronic Health Record (EHR), An unlisted use case, another unlisted use case | 3.0 | [LINK](www.example.website.com) |
+| PA Consulting | Test Product #1 | [Email](mailto:Colin.Bradshaw@paconsulting.com) | Short Description: | [More Information](https://github.com/colin-bradshaw-pac/ddf-home-testing/issues/77) | Electronic Health Record (EHR), blah blah | 2.5 | [LINK](example.com) |
