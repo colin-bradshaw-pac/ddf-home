@@ -1,4 +1,5 @@
 # Standard Library Imports
+import os
 import sys
 import json
 
@@ -84,19 +85,21 @@ def write_to_catalog(insert_dict: dict[str, str])-> None:
 def main():
     '''Main function, transforms payload into a markdown table formatted string and inserts it to the catalog.md file.'''
     # Store github_context payload as python dictionary
-    payload_dict: dict = json.loads(sys.argv[1])
+    # payload_dict: dict = json.loads(sys.argv[1])
 
-    # Extract Issue content from JSON Dictionary
-    issue_body: list = payload_dict["event"]["issue"]["body"].split('###')[1:]
-    issue_url: str = payload_dict["event"]["issue"]["html_url"]
+    print(os.environ["GITHUB_CONTEXT"])
 
-    # Compose ordered dictionary of form answer : responses
-    insert_dict = {key:value for key, value in [item.strip().split('\n\n') for item in issue_body]}
+    # # Extract Issue content from JSON Dictionary
+    # issue_body: list = payload_dict["event"]["issue"]["body"].split('###')[1:]
+    # issue_url: str = payload_dict["event"]["issue"]["html_url"]
 
-    # Perform all insert_dict transformations
-    insert_dict = transform_insert_dict(insert_dict, issue_url)
+    # # Compose ordered dictionary of form answer : responses
+    # insert_dict = {key:value for key, value in [item.strip().split('\n\n') for item in issue_body]}
 
-    write_to_catalog(insert_dict)
+    # # Perform all insert_dict transformations
+    # insert_dict = transform_insert_dict(insert_dict, issue_url)
+
+    # write_to_catalog(insert_dict)
 
 if __name__ == "__main__":
     main()
