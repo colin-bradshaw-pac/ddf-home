@@ -6,7 +6,6 @@ on:
 
 env:
   GITHUB_CONTEXT: ${{ toJson(github.event.issue) }}
-  ISSUE_NUMBER: $ {{ github.event.issue.number }}
 
 jobs:
   update-catalog:
@@ -44,7 +43,7 @@ jobs:
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         git add ${{ github.workspace }}/catalog/catalog.md
-        git commit -m "Adding Row from issue #${{ env.ISSUE_NUMBER }} to Catalog via Github Action"
+        git commit -m "Adding Row from issue #${{ github.event.issue.number }} to Catalog via Github Action"
     
     - name: Push changes
       uses: ad-m/github-push-action@v0.8.0
