@@ -10,3 +10,4 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam consequatur, qu
 | Organization Name | Product/Service Name | Contact Email | Product Description | More Info | Covered Use Cases | USDM Version Compatibility | Link |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | test | test | [Email](mailto:test) | test | [More Information](https://github.com/colin-bradshaw-pac/ddf-home-testing/issues/58) | eSource, test | 2.5 | [LINK](test) |
+| PA Consulting | Test Product Name | [Email](mailto:colin-bradshaw@paconsulting.com) | A Short Product Description | [More Information](https://github.com/colin-bradshaw-pac/ddf-home-testing/issues/59) | Electronic Health Record (EHR), a random use case | 2.5 | [LINK](test) |
