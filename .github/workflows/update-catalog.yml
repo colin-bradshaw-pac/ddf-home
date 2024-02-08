@@ -31,7 +31,7 @@ jobs:
         ls ${{ github.workspace }}/catalog
 
     - name: Run add_row
-      run: python ${{ github.workspace }}/catalog/add_row.py "${{ env.GITHUB_CONTEXT }}"
+      run: python ${{ github.workspace }}/catalog/add_row.py '${{ env.GITHUB_CONTEXT }}'
       shell: sh
 
     - name: Check git config
