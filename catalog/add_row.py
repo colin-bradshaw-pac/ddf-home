@@ -89,17 +89,17 @@ def main():
     print('Printing github_context')
     print(payload_dict)
 
-    # # Extract Issue content from JSON Dictionary
-    # issue_body: list = payload_dict["event"]["issue"]["body"].split('###')[1:]
-    # issue_url: str = payload_dict["event"]["issue"]["html_url"]
+    # Extract Issue content from JSON Dictionary
+    issue_body: list = payload_dict["body"].split('###')[1:]
+    issue_url: str = payload_dict["html_url"]
 
-    # # Compose ordered dictionary of form answer : responses
-    # insert_dict = {key:value for key, value in [item.strip().split('\n\n') for item in issue_body]}
+    # Compose ordered dictionary of form answer : responses
+    insert_dict = {key:value for key, value in [item.strip().split('\n\n') for item in issue_body]}
 
-    # # Perform all insert_dict transformations
-    # insert_dict = transform_insert_dict(insert_dict, issue_url)
+    # Perform all insert_dict transformations
+    insert_dict = transform_insert_dict(insert_dict, issue_url)
 
-    # write_to_catalog(insert_dict)
+    write_to_catalog(insert_dict)
 
 if __name__ == "__main__":
     main()
