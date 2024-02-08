@@ -87,6 +87,7 @@ def main():
     # Store github_context payload as python dictionary
     # payload_dict: dict = json.loads(sys.argv[1])
 
+    print('Printing github_context')
     print(os.environ["GITHUB_CONTEXT"])
 
     # # Extract Issue content from JSON Dictionary
