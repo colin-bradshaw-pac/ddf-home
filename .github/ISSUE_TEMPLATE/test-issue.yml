@@ -1,7 +1,7 @@
-name: New Catalog Entry
+name: Test Issue
 description: Add a row to the DDF Catalog
 title: "[DDF Catalog Entry] : INSTRUCTION TO USERS HERE RE: TITLING ISSUE"
-labels: ["new-catalog-entry"]
+labels: ["test-issue"]
 body:
   - type: markdown
     attributes:

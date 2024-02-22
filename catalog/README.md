@@ -41,5 +41,7 @@ Program is automatically executed every time the new-catalog-entry issue form is
 
 ## Version History
 
+* 1.1 - 02/21/2024
+    * Fixes to ensure update-catalog only runs when new-catalog-entry issues are logged.
 * 1.0 - 02/07/2024
 	* First release: Insert github form answers into a markdown table.
